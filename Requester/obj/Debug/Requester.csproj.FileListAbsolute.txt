@@ -1,0 +1,10 @@
+C:\Users\student\Desktop\Requester\Requester\bin\Debug\Requester.exe.config
+C:\Users\student\Desktop\Requester\Requester\bin\Debug\Requester.exe
+C:\Users\student\Desktop\Requester\Requester\bin\Debug\Requester.pdb
+C:\Users\student\Desktop\Requester\Requester\obj\Debug\Requester.csprojAssemblyReference.cache
+C:\Users\student\Desktop\Requester\Requester\obj\Debug\Requester.Properties.Resources.resources
+C:\Users\student\Desktop\Requester\Requester\obj\Debug\Requester.Авторизация.resources
+C:\Users\student\Desktop\Requester\Requester\obj\Debug\Requester.csproj.GenerateResource.cache
+C:\Users\student\Desktop\Requester\Requester\obj\Debug\Requester.csproj.CoreCompileInputs.cache
+C:\Users\student\Desktop\Requester\Requester\obj\Debug\Requester.exe
+C:\Users\student\Desktop\Requester\Requester\obj\Debug\Requester.pdb

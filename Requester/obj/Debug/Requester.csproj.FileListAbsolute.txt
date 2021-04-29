@@ -22,3 +22,4 @@ C:\Users\student\Desktop\Requester\Requester\bin\Debug\K4os.Hash.xxHash.dll
 C:\Users\student\Desktop\Requester\Requester\bin\Debug\System.Numerics.Vectors.dll
 C:\Users\student\Desktop\Requester\Requester\bin\Debug\MySql.Data.xml
 C:\Users\student\Desktop\Requester\Requester\obj\Debug\Requester.csproj.CopyComplete
+C:\Users\student\Desktop\Requester\Requester\obj\Debug\Requester.Главная.resources

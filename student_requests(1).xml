@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 3.4.6
+- http://www.phpmyadmin.net
+-
+- Хост: localhost:3306
+- Время создания: Апр 29 2021 г., 14:21
+- Версия сервера: 5.6.27
+- Версия PHP: 5.5.20-pl0-gentoo
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="student_requests" collation="utf8_general_ci" charset="utf8">
+            <pma:table name="Catalog">
+                CREATE TABLE `Catalog` (
+                  `Id_clothes` int(64) NOT NULL AUTO_INCREMENT,
+                  `Name` varchar(256) NOT NULL,
+                  `Article` int(64) NOT NULL,
+                  `Size` varchar(256) NOT NULL,
+                  `Attribute` varchar(1) NOT NULL,
+                  PRIMARY KEY (`Id_clothes`),
+                  UNIQUE KEY `Article` (`Article`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="Divisions">
+                CREATE TABLE `Divisions` (
+                  `Id_division` int(64) NOT NULL AUTO_INCREMENT,
+                  `code` varchar(256) NOT NULL,
+                  `Name` varchar(256) NOT NULL,
+                  `Id_chief` int(64) DEFAULT NULL,
+                  `phone` int(64) NOT NULL,
+                  `Description` varchar(256) NOT NULL,
+                  PRIMARY KEY (`Id_division`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="Orders">
+                CREATE TABLE `Orders` (
+                  `Id_order` int(64) NOT NULL AUTO_INCREMENT,
+                  `Name` varchar(256) NOT NULL,
+                  `Description` varchar(256) NOT NULL,
+                  `Id_clothes` int(64) NOT NULL,
+                  `Count` int(64) NOT NULL,
+                  `Id_user` int(64) NOT NULL,
+                  `DateTime` datetime NOT NULL,
+                  `Status` varchar(256) NOT NULL,
+                  PRIMARY KEY (`Id_order`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="Posts">
+                CREATE TABLE `Posts` (
+                  `Id_post` int(64) NOT NULL AUTO_INCREMENT,
+                  `Name` varchar(256) NOT NULL,
+                  PRIMARY KEY (`Id_post`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="Users">
+                CREATE TABLE `Users` (
+                  `Id_users` int(64) NOT NULL AUTO_INCREMENT,
+                  `Fio` varchar(256) NOT NULL,
+                  `login` varchar(256) NOT NULL,
+                  `Password` varchar(256) NOT NULL,
+                  `Id_division` int(64) NOT NULL,
+                  `Id_post` varchar(256) NOT NULL,
+                  `phone` int(64) NOT NULL,
+                  PRIMARY KEY (`Id_users`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - База данных: 'student_requests'
+    -->
+    <database name="student_requests">
+        <!-- Таблица Catalog -->
+        <table name="Catalog">
+            <column name="Id_clothes">1</column>
+            <column name="Name">костюм (халат) для защиты от общих производственных загрязнений </column>
+            <column name="Article">122336</column>
+            <column name="Size">S</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">2</column>
+            <column name="Name">костюм (халат) для защиты от общих производственных загрязнений</column>
+            <column name="Article">211236</column>
+            <column name="Size">S</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">3</column>
+            <column name="Name">костюм (халат) для защиты от общих производственных загрязнений</column>
+            <column name="Article">322136</column>
+            <column name="Size">M</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">4</column>
+            <column name="Name">костюм (халат) для защиты от общих производственных загрязнений</column>
+            <column name="Article">431236</column>
+            <column name="Size">M</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">5</column>
+            <column name="Name">Перчатки с полимерным покрытием </column>
+            <column name="Article">748596</column>
+            <column name="Size">M</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">6</column>
+            <column name="Name">Перчатки с полимерным покрытием</column>
+            <column name="Article">326598</column>
+            <column name="Size">M</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">7</column>
+            <column name="Name">Перчатки с полимерным покрытием</column>
+            <column name="Article">525258</column>
+            <column name="Size">L</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">8</column>
+            <column name="Name">Перчатки с полимерным покрытием</column>
+            <column name="Article">215986</column>
+            <column name="Size">L</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">9</column>
+            <column name="Name">Жилет утепленный </column>
+            <column name="Article">857496</column>
+            <column name="Size">S</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">10</column>
+            <column name="Name">Жилет утепленный</column>
+            <column name="Article">968574</column>
+            <column name="Size">S</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">11</column>
+            <column name="Name">полуботинки кожанные </column>
+            <column name="Article">635241</column>
+            <column name="Size">39</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">12</column>
+            <column name="Name">полуботинки кожанные </column>
+            <column name="Article">526341</column>
+            <column name="Size">39</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">13</column>
+            <column name="Name">полуботинки кожанные </column>
+            <column name="Article">415263</column>
+            <column name="Size">42</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">14</column>
+            <column name="Name">полуботинки кожанные </column>
+            <column name="Article">326541</column>
+            <column name="Size">42</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">15</column>
+            <column name="Name">наушники противошумные </column>
+            <column name="Article">451278</column>
+            <column name="Size">М</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">16</column>
+            <column name="Name">наушники противошумные </column>
+            <column name="Article">986532</column>
+            <column name="Size">М</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">17</column>
+            <column name="Name">сапоги резиновые</column>
+            <column name="Article">984532</column>
+            <column name="Size">40</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">18</column>
+            <column name="Name">сапоги резиновые</column>
+            <column name="Article">789852</column>
+            <column name="Size">40</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">19</column>
+            <column name="Name">сапоги резиновые</column>
+            <column name="Article">829371</column>
+            <column name="Size">43</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">20</column>
+            <column name="Name">сапоги резиновые</column>
+            <column name="Article">791346</column>
+            <column name="Size">43</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">21</column>
+            <column name="Name">Куртка на утепляющей прокладке </column>
+            <column name="Article">917364</column>
+            <column name="Size">М</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">22</column>
+            <column name="Name">Куртка на утепляющей прокладке </column>
+            <column name="Article">497631</column>
+            <column name="Size">М</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">23</column>
+            <column name="Name">Куртка на утепляющей прокладке </column>
+            <column name="Article">927282</column>
+            <column name="Size">L</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">24</column>
+            <column name="Name">Куртка на утепляющей прокладке </column>
+            <column name="Article">917181</column>
+            <column name="Size">L</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">25</column>
+            <column name="Name">перчатки резиновые </column>
+            <column name="Article">854565</column>
+            <column name="Size">М</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">26</column>
+            <column name="Name">перчатки резиновые </column>
+            <column name="Article">191713</column>
+            <column name="Size">М</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">27</column>
+            <column name="Name">перчатки резиновые </column>
+            <column name="Article">292723</column>
+            <column name="Size">L</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">28</column>
+            <column name="Name">перчатки резиновые </column>
+            <column name="Article">373934</column>
+            <column name="Size">L</column>
+            <column name="Attribute">М</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">29</column>
+            <column name="Name">Сапоги утепленные </column>
+            <column name="Article">676169</column>
+            <column name="Size">42</column>
+            <column name="Attribute">Ж</column>
+        </table>
+        <table name="Catalog">
+            <column name="Id_clothes">30</column>
+            <column name="Name">Сапоги утепленные </column>
+            <column name="Article">494643</column>
+            <column name="Size">42</column>
+            <column name="Attribute">М</column>
+        </table>
+        <!-- Таблица Divisions -->
+        <table name="Divisions">
+            <column name="Id_division">1</column>
+            <column name="code">000100</column>
+            <column name="Name">Механический цех</column>
+            <column name="Id_chief">1</column>
+            <column name="phone">2599876</column>
+            <column name="Description">занимаются изготовлением механических деталей </column>
+        </table>
+        <table name="Divisions">
+            <column name="Id_division">2</column>
+            <column name="code">000200</column>
+            <column name="Name">Инструментальный цех</column>
+            <column name="Id_chief">2</column>
+            <column name="phone">2595653</column>
+            <column name="Description">занимаются изготовлением инструментов </column>
+        </table>
+        <table name="Divisions">
+            <column name="Id_division">3</column>
+            <column name="code">000300</column>
+            <column name="Name">Транспортный цех</column>
+            <column name="Id_chief">3</column>
+            <column name="phone">2599636</column>
+            <column name="Description">занимается транспортировкой </column>
+        </table>
+        <table name="Divisions">
+            <column name="Id_division">4</column>
+            <column name="code">000400</column>
+            <column name="Name">Опытный цех</column>
+            <column name="Id_chief">4</column>
+            <column name="phone">2598754</column>
+            <column name="Description">занимается производством материалов в единичных колличествах </column>
+        </table>
+        <table name="Divisions">
+            <column name="Id_division">5</column>
+            <column name="code">000500</column>
+            <column name="Name">Сварочный цех </column>
+            <column name="Id_chief">5</column>
+            <column name="phone">2598512</column>
+            <column name="Description">занимается свариванием деталей </column>
+        </table>
+        <table name="Divisions">
+            <column name="Id_division">6</column>
+            <column name="code">000600</column>
+            <column name="Name">Отдел кадров </column>
+            <column name="Id_chief">6</column>
+            <column name="phone">2593217</column>
+            <column name="Description">занимается набором персонала </column>
+        </table>
+        <table name="Divisions">
+            <column name="Id_division">7</column>
+            <column name="code">000700</column>
+            <column name="Name">Финансовый отдел</column>
+            <column name="Id_chief">7</column>
+            <column name="phone">2597852</column>
+            <column name="Description">занимаются учетом и ведением финансов </column>
+        </table>
+        <table name="Divisions">
+            <column name="Id_division">8</column>
+            <column name="code">000800</column>
+            <column name="Name">Технологический отедл </column>
+            <column name="Id_chief">8</column>
+            <column name="phone">2595421</column>
+            <column name="Description">занимается проектированием</column>
+        </table>
+        <table name="Divisions">
+            <column name="Id_division">9</column>
+            <column name="code">000900</column>
+            <column name="Name">Отдел главного металлурга </column>
+            <column name="Id_chief">9</column>
+            <column name="phone">2592154</column>
+            <column name="Description">занимается выпуском конкуретноспособной продукции </column>
+        </table>
+        <table name="Divisions">
+            <column name="Id_division">10</column>
+            <column name="code">000110</column>
+            <column name="Name">Информационнй отдел</column>
+            <column name="Id_chief">10</column>
+            <column name="phone">2596532</column>
+            <column name="Description">занимается аналитической и оперативной работой</column>
+        </table>
+        <!-- Таблица Orders -->
+        <table name="Orders">
+            <column name="Id_order">1</column>
+            <column name="Name">костюм (халат) для защиты от общих производственных загрязнений</column>
+            <column name="Description">требуется срочно</column>
+            <column name="Id_clothes">1</column>
+            <column name="Count">1</column>
+            <column name="Id_user">1</column>
+            <column name="DateTime">2021-04-15 00:00:00</column>
+            <column name="Status">В ожидании</column>
+        </table>
+        <table name="Orders">
+            <column name="Id_order">2</column>
+            <column name="Name">Перчатки с полимерным покрытием</column>
+            <column name="Description">доставте</column>
+            <column name="Id_clothes">6</column>
+            <column name="Count">2</column>
+            <column name="Id_user">2</column>
+            <column name="DateTime">2021-04-17 00:00:00</column>
+            <column name="Status">Одобрено</column>
+        </table>
+        <table name="Orders">
+            <column name="Id_order">3</column>
+            <column name="Name">Жилет утепленный</column>
+            <column name="Description">доставте</column>
+            <column name="Id_clothes">3</column>
+            <column name="Count">2</column>
+            <column name="Id_user">3</column>
+            <column name="DateTime">2021-04-18 00:00:00</column>
+            <column name="Status">Отказано</column>
+        </table>
+        <!-- Таблица Posts -->
+        <table name="Posts">
+            <column name="Id_post">1</column>
+            <column name="Name">Начальник механического цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">2</column>
+            <column name="Name">Зам начальника механического цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">3</column>
+            <column name="Name">Начальник инструментального цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">4</column>
+            <column name="Name">Зам начальника инструментального цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">5</column>
+            <column name="Name">Начальник транспортного цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">6</column>
+            <column name="Name">Зам начальника транспортного цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">7</column>
+            <column name="Name">Начальник опытного цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">8</column>
+            <column name="Name">зам начальника опытного цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">9</column>
+            <column name="Name">Начальник сварочного цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">10</column>
+            <column name="Name">Зам начальника сварочного цеха</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">11</column>
+            <column name="Name">Начальник отдела кадров</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">12</column>
+            <column name="Name">Зам начальника отдела кадров </column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">13</column>
+            <column name="Name">Начальник финансового отдела </column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">14</column>
+            <column name="Name">Зам начальника финансового отдела</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">15</column>
+            <column name="Name">Начальник технологического отдела</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">16</column>
+            <column name="Name">Зам начальника технологического отдела</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">17</column>
+            <column name="Name">Главный металлург </column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">18</column>
+            <column name="Name">Зам главы металлурга </column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">19</column>
+            <column name="Name">Начальник информационного отдела</column>
+        </table>
+        <table name="Posts">
+            <column name="Id_post">20</column>
+            <column name="Name">Зам начальника информационного отедла </column>
+        </table>
+        <!-- Таблица Users -->
+        <table name="Users">
+            <column name="Id_users">1</column>
+            <column name="Fio">Вилявина Наталья Генадьевна </column>
+            <column name="login">Vialivna</column>
+            <column name="Password">202cb962ac59075b964b07152d234b70</column>
+            <column name="Id_division">1</column>
+            <column name="Id_post">1</column>
+            <column name="phone">89562321</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">2</column>
+            <column name="Fio">Жуин Михаил Юрьевич</column>
+            <column name="login">Zuin</column>
+            <column name="Password">c8ffe9a587b126f152ed3d89a146b445</column>
+            <column name="Id_division">1</column>
+            <column name="Id_post">2</column>
+            <column name="phone">89562154</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">3</column>
+            <column name="Fio">Князев Иван Витальевич</column>
+            <column name="login">Knezev</column>
+            <column name="Password">069059b7ef840f0c74a814ec9237b6ec</column>
+            <column name="Id_division">2</column>
+            <column name="Id_post">3</column>
+            <column name="phone">89747454</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">4</column>
+            <column name="Fio">Хорева Юлия Дмитриевна</column>
+            <column name="login">Horeva</column>
+            <column name="Password">ec5decca5ed3d6b8079e2e7e7bacc9f2</column>
+            <column name="Id_division">2</column>
+            <column name="Id_post">4</column>
+            <column name="phone">89545120</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">5</column>
+            <column name="Fio">Солнцева Наталья Генадьевна</column>
+            <column name="login">Solncheva</column>
+            <column name="Password">76dc611d6ebaafc66cc0879c71b5db5c</column>
+            <column name="Id_division">3</column>
+            <column name="Id_post">5</column>
+            <column name="phone">89525257</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">6</column>
+            <column name="Fio">Морозова Татьяна Юрьевна</column>
+            <column name="login">Morozova</column>
+            <column name="Password">02522a2b2726fb0a03bb19f2d8d9524d</column>
+            <column name="Id_division">3</column>
+            <column name="Id_post">6</column>
+            <column name="phone">89545474</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">7</column>
+            <column name="Fio">Пономарев Иван Савельевич</column>
+            <column name="login">Ponamarev</column>
+            <column name="Password">76dc611d6ebaafc66cc0879c71b5db5c</column>
+            <column name="Id_division">4</column>
+            <column name="Id_post">7</column>
+            <column name="phone">89636274</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">8</column>
+            <column name="Fio">Семенова Ева Константиновна</column>
+            <column name="login">Semenova</column>
+            <column name="Password">d1f491a404d6854880943e5c3cd9ca25</column>
+            <column name="Id_division">4</column>
+            <column name="Id_post">8</column>
+            <column name="phone">89023674</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">9</column>
+            <column name="Fio">Жуков Александр Ильич</column>
+            <column name="login">Zykov</column>
+            <column name="Password">9b8619251a19057cff70779273e95aa6</column>
+            <column name="Id_division">5</column>
+            <column name="Id_post">9</column>
+            <column name="phone">89032141</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">10</column>
+            <column name="Fio">Зуева Арина Макаровна</column>
+            <column name="login">Zyeva</column>
+            <column name="Password">1afa34a7f984eeabdbb0a7d494132ee5</column>
+            <column name="Id_division">5</column>
+            <column name="Id_post">10</column>
+            <column name="phone">89401232</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">11</column>
+            <column name="Fio">Федорова Таисия Антоновна</column>
+            <column name="login">Fedorovna</column>
+            <column name="Password">65ded5353c5ee48d0b7d48c591b8f430</column>
+            <column name="Id_division">6</column>
+            <column name="Id_post">11</column>
+            <column name="phone">89966965</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">12</column>
+            <column name="Fio">Ильинская Виктория Глебовна</column>
+            <column name="login">Ilinskai</column>
+            <column name="Password">9fc3d7152ba9336a670e36d0ed79bc43</column>
+            <column name="Id_division">6</column>
+            <column name="Id_post">12</column>
+            <column name="phone">89522521</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">13</column>
+            <column name="Fio">Овчинников Егор Арсентьевич</column>
+            <column name="login">Ovchinnikov</column>
+            <column name="Password">02522a2b2726fb0a03bb19f2d8d9524d</column>
+            <column name="Id_division">7</column>
+            <column name="Id_post">13</column>
+            <column name="phone">8984586</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">14</column>
+            <column name="Fio">Кузнецов Артём Богданович</column>
+            <column name="login">Kyznecov</column>
+            <column name="Password">7f1de29e6da19d22b51c68001e7e0e54</column>
+            <column name="Id_division">7</column>
+            <column name="Id_post">14</column>
+            <column name="phone">89748590</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">15</column>
+            <column name="Fio">Костин Михаил Никитич</column>
+            <column name="login">Kostin</column>
+            <column name="Password">3988c7f88ebcb58c6ce932b957b6f332</column>
+            <column name="Id_division">8</column>
+            <column name="Id_post">15</column>
+            <column name="phone">89744551</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">16</column>
+            <column name="Fio">Платонов Григорий Иванович</column>
+            <column name="login">Platonov</column>
+            <column name="Password">42a0e188f5033bc65bf8d78622277c4e</column>
+            <column name="Id_division">8</column>
+            <column name="Id_post">16</column>
+            <column name="phone">89656232</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">17</column>
+            <column name="Fio">Рогов Денис Дмитриевич</column>
+            <column name="login">Rogov</column>
+            <column name="Password">e00da03b685a0dd18fb6a08af0923de0</column>
+            <column name="Id_division">9</column>
+            <column name="Id_post">17</column>
+            <column name="phone">89545253</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">18</column>
+            <column name="Fio">Агеев Даниил Андреевич</column>
+            <column name="login">Ageev</column>
+            <column name="Password">013d407166ec4fa56eb1e1f8cbe183b9</column>
+            <column name="Id_division">9</column>
+            <column name="Id_post">18</column>
+            <column name="phone">89656218</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">19</column>
+            <column name="Fio">Калашников Иван Ярославович</column>
+            <column name="login">Kalashnikov</column>
+            <column name="Password">1385974ed5904a438616ff7bdb3f7439</column>
+            <column name="Id_division">10</column>
+            <column name="Id_post">19</column>
+            <column name="phone">89032149</column>
+        </table>
+        <table name="Users">
+            <column name="Id_users">20</column>
+            <column name="Fio">Уткина Екатерина Степановна</column>
+            <column name="login">Ytkina</column>
+            <column name="Password">0f28b5d49b3020afeecd95b4009adf4c</column>
+            <column name="Id_division">10</column>
+            <column name="Id_post">20</column>
+            <column name="phone">89020105</column>
+        </table>
+    </database>
+</pma_xml_export>

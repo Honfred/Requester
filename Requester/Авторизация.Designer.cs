@@ -119,7 +119,6 @@ namespace Requester
             this.MaximizeBox = false;
             this.Name = "Авторизация";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";

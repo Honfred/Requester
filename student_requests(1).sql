@@ -7,8 +7,7 @@
 -- Версия сервера: 5.6.27
 -- Версия PHP: 5.5.20-pl0-gentoo
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,21 +25,19 @@ SET time_zone = "+00:00";
 -- Структура таблицы `Catalog`
 --
 
-CREATE TABLE IF NOT EXISTS `Catalog` (
-  `Id_clothes` int(64) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(256) NOT NULL,
-  `Article` int(64) NOT NULL,
-  `Size` varchar(256) NOT NULL,
-  `Attribute` varchar(1) NOT NULL,
-  PRIMARY KEY (`Id_clothes`),
-  UNIQUE KEY `Article` (`Article`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+CREATE TABLE Catalog (
+  Id_clothes int NOT NULL,
+  Name varchar(256) NOT NULL,
+  Article int NOT NULL,
+  Size varchar(256) NOT NULL,
+  Attribute varchar(1) NOT NULL,
+)  ;
 
 --
 -- Дамп данных таблицы `Catalog`
 --
 
-INSERT INTO `Catalog` (`Id_clothes`, `Name`, `Article`, `Size`, `Attribute`) VALUES
+INSERT INTO Catalog ('Id_clothes', 'Name', 'Article', 'Size', 'Attribute') VALUES
 (1, 'костюм (халат) для защиты от общих производственных загрязнений ', 122336, 'S', 'М'),
 (2, 'костюм (халат) для защиты от общих производственных загрязнений', 211236, 'S', 'Ж'),
 (3, 'костюм (халат) для защиты от общих производственных загрязнений', 322136, 'M', 'М'),
@@ -78,21 +75,20 @@ INSERT INTO `Catalog` (`Id_clothes`, `Name`, `Article`, `Size`, `Attribute`) VAL
 -- Структура таблицы `Divisions`
 --
 
-CREATE TABLE IF NOT EXISTS `Divisions` (
-  `Id_division` int(64) NOT NULL AUTO_INCREMENT,
-  `code` varchar(256) NOT NULL,
-  `Name` varchar(256) NOT NULL,
-  `Id_chief` int(64) DEFAULT NULL,
-  `phone` int(64) NOT NULL,
-  `Description` varchar(256) NOT NULL,
-  PRIMARY KEY (`Id_division`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+CREATE TABLE Divisions (
+  Id_division int NOT NULL,
+  code varchar(256) NOT NULL,
+  Name varchar(256) NOT NULL,
+  Id_chief int DEFAULT NULL,
+  phone int NOT NULL,
+  Description varchar(256) NOT NULL,
+) ;
 
 --
 -- Дамп данных таблицы `Divisions`
 --
 
-INSERT INTO `Divisions` (`Id_division`, `code`, `Name`, `Id_chief`, `phone`, `Description`) VALUES
+INSERT INTO Divisions ('Id_division', 'code', 'Name', 'Id_chief', 'phone', 'Description') VALUES
 (1, '000100', 'Механический цех', 1, 2599876, 'занимаются изготовлением механических деталей '),
 (2, '000200', 'Инструментальный цех', 2, 2595653, 'занимаются изготовлением инструментов '),
 (3, '000300', 'Транспортный цех', 3, 2599636, 'занимается транспортировкой '),
@@ -110,23 +106,22 @@ INSERT INTO `Divisions` (`Id_division`, `code`, `Name`, `Id_chief`, `phone`, `De
 -- Структура таблицы `Orders`
 --
 
-CREATE TABLE IF NOT EXISTS `Orders` (
-  `Id_order` int(64) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(256) NOT NULL,
-  `Description` varchar(256) NOT NULL,
-  `Id_clothes` int(64) NOT NULL,
-  `Count` int(64) NOT NULL,
-  `Id_user` int(64) NOT NULL,
-  `DateTime` datetime NOT NULL,
-  `Status` varchar(256) NOT NULL,
-  PRIMARY KEY (`Id_order`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+CREATE TABLE Orders (
+  Id_order int NOT NULL,
+  Name varchar(256) NOT NULL,
+  Description varchar(256) NOT NULL,
+  Id_clothes int NOT NULL,
+  Count int NOT NULL,
+  Id_user int NOT NULL,
+  DateTime datetime NOT NULL,
+  Status varchar(256) NOT NULL,
+) ;
 
 --
 -- Дамп данных таблицы `Orders`
 --
 
-INSERT INTO `Orders` (`Id_order`, `Name`, `Description`, `Id_clothes`, `Count`, `Id_user`, `DateTime`, `Status`) VALUES
+INSERT INTO Orders ('Id_order', 'Name', 'Description', 'Id_clothes', 'Count', 'Id_user', 'DateTime', 'Status') VALUES
 (1, 'костюм (халат) для защиты от общих производственных загрязнений', 'требуется срочно', 1, 1, 1, '2021-04-15 00:00:00', 'В ожидании'),
 (2, 'Перчатки с полимерным покрытием', 'доставте', 6, 2, 2, '2021-04-17 00:00:00', 'Одобрено'),
 (3, 'Жилет утепленный', 'доставте', 3, 2, 3, '2021-04-18 00:00:00', 'Отказано');
@@ -137,17 +132,16 @@ INSERT INTO `Orders` (`Id_order`, `Name`, `Description`, `Id_clothes`, `Count`, 
 -- Структура таблицы `Posts`
 --
 
-CREATE TABLE IF NOT EXISTS `Posts` (
-  `Id_post` int(64) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(256) NOT NULL,
-  PRIMARY KEY (`Id_post`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+CREATE TABLE Posts (
+  Id_post int NOT NULL,
+  Name varchar(256) NOT NULL,
+) ;
 
 --
 -- Дамп данных таблицы `Posts`
 --
 
-INSERT INTO `Posts` (`Id_post`, `Name`) VALUES
+INSERT INTO Posts ('Id_post', 'Name') VALUES
 (1, 'Начальник механического цеха'),
 (2, 'Зам начальника механического цеха'),
 (3, 'Начальник инструментального цеха'),
@@ -175,42 +169,41 @@ INSERT INTO `Posts` (`Id_post`, `Name`) VALUES
 -- Структура таблицы `Users`
 --
 
-CREATE TABLE IF NOT EXISTS `Users` (
-  `Id_users` int(64) NOT NULL AUTO_INCREMENT,
-  `Fio` varchar(256) NOT NULL,
-  `login` varchar(256) NOT NULL,
-  `Password` varchar(256) NOT NULL,
-  `Id_division` int(64) NOT NULL,
-  `Id_post` varchar(256) NOT NULL,
-  `phone` int(64) NOT NULL,
-  PRIMARY KEY (`Id_users`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+CREATE TABLE Users (
+  Id_users int NOT NULL,
+  Fio varchar(256) NOT NULL,
+  login varchar(256) NOT NULL,
+  Password varchar(256) NOT NULL,
+  Id_division int NOT NULL,
+  Id_post varchar(256) NOT NULL,
+  phone int NOT NULL,
+) ;
 
 --
 -- Дамп данных таблицы `Users`
 --
 
-INSERT INTO `Users` (`Id_users`, `Fio`, `login`, `Password`, `Id_division`, `Id_post`, `phone`) VALUES
-(1, 'Вилявина Наталья Генадьевна ', 'Vialivna', '202cb962ac59075b964b07152d234b70', 1, '1', 89562321),
-(2, 'Жуин Михаил Юрьевич', 'Zuin', 'c8ffe9a587b126f152ed3d89a146b445', 1, '2', 89562154),
-(3, 'Князев Иван Витальевич', 'Knezev', '069059b7ef840f0c74a814ec9237b6ec', 2, '3', 89747454),
-(4, 'Хорева Юлия Дмитриевна', 'Horeva', 'ec5decca5ed3d6b8079e2e7e7bacc9f2', 2, '4', 89545120),
-(5, 'Солнцева Наталья Генадьевна', 'Solncheva', '76dc611d6ebaafc66cc0879c71b5db5c', 3, '5', 89525257),
-(6, 'Морозова Татьяна Юрьевна', 'Morozova', '02522a2b2726fb0a03bb19f2d8d9524d', 3, '6', 89545474),
-(7, 'Пономарев Иван Савельевич', 'Ponamarev', '76dc611d6ebaafc66cc0879c71b5db5c', 4, '7', 89636274),
-(8, 'Семенова Ева Константиновна', 'Semenova', 'd1f491a404d6854880943e5c3cd9ca25', 4, '8', 89023674),
-(9, 'Жуков Александр Ильич', 'Zykov', '9b8619251a19057cff70779273e95aa6', 5, '9', 89032141),
-(10, 'Зуева Арина Макаровна', 'Zyeva', '1afa34a7f984eeabdbb0a7d494132ee5', 5, '10', 89401232),
-(11, 'Федорова Таисия Антоновна', 'Fedorovna', '65ded5353c5ee48d0b7d48c591b8f430', 6, '11', 89966965),
-(12, 'Ильинская Виктория Глебовна', 'Ilinskai', '9fc3d7152ba9336a670e36d0ed79bc43', 6, '12', 89522521),
-(13, 'Овчинников Егор Арсентьевич', 'Ovchinnikov', '02522a2b2726fb0a03bb19f2d8d9524d', 7, '13', 8984586),
-(14, 'Кузнецов Артём Богданович', 'Kyznecov', '7f1de29e6da19d22b51c68001e7e0e54', 7, '14', 89748590),
-(15, 'Костин Михаил Никитич', 'Kostin', '3988c7f88ebcb58c6ce932b957b6f332', 8, '15', 89744551),
-(16, 'Платонов Григорий Иванович', 'Platonov', '42a0e188f5033bc65bf8d78622277c4e', 8, '16', 89656232),
-(17, 'Рогов Денис Дмитриевич', 'Rogov', 'e00da03b685a0dd18fb6a08af0923de0', 9, '17', 89545253),
-(18, 'Агеев Даниил Андреевич', 'Ageev', '013d407166ec4fa56eb1e1f8cbe183b9', 9, '18', 89656218),
-(19, 'Калашников Иван Ярославович', 'Kalashnikov', '1385974ed5904a438616ff7bdb3f7439', 10, '19', 89032149),
-(20, 'Уткина Екатерина Степановна', 'Ytkina', '0f28b5d49b3020afeecd95b4009adf4c', 10, '20', 89020105);
+INSERT INTO Users ('Id_users', 'Fio', 'login', 'Password', 'Id_division', 'Id_post', 'phone') VALUES
+(1, 'Вилявина Наталья Генадьевна ', 'Vialivna', '123', 1, '1', 89562321),
+(2, 'Жуин Михаил Юрьевич', 'Zuin', '124', 1, '2', 89562154),
+(3, 'Князев Иван Витальевич', 'Knezev', '125', 2, '3', 89747454),
+(4, 'Хорева Юлия Дмитриевна', 'Horeva', '126', 2, '4', 89545120),
+(5, 'Солнцева Наталья Генадьевна', 'Solncheva', '127', 3, '5', 89525257),
+(6, 'Морозова Татьяна Юрьевна', 'Morozova', '128', 3, '6', 89545474),
+(7, 'Пономарев Иван Савельевич', 'Ponamarev', '129', 4, '7', 89636274),
+(8, 'Семенова Ева Константиновна', 'Semenova', '130', 4, '8', 89023674),
+(9, 'Жуков Александр Ильич', 'Zykov', '131', 5, '9', 89032141),
+(10, 'Зуева Арина Макаровна', 'Zyeva', '132', 5, '10', 89401232),
+(11, 'Федорова Таисия Антоновна', 'Fedorovna', '133', 6, '11', 89966965),
+(12, 'Ильинская Виктория Глебовна', 'Ilinskai', '134', 6, '12', 89522521),
+(13, 'Овчинников Егор Арсентьевич', 'Ovchinnikov', '135', 7, '13', 8984586),
+(14, 'Кузнецов Артём Богданович', 'Kyznecov', '136', 7, '14', 89748590),
+(15, 'Костин Михаил Никитич', 'Kostin', '137', 8, '15', 89744551),
+(16, 'Платонов Григорий Иванович', 'Platonov', '138', 8, '16', 89656232),
+(17, 'Рогов Денис Дмитриевич', 'Rogov', '139', 9, '17', 89545253),
+(18, 'Агеев Даниил Андреевич', 'Ageev', '140', 9, '18', 89656218),
+(19, 'Калашников Иван Ярославович', 'Kalashnikov', '141', 10, '19', 89032149),
+(20, 'Уткина Екатерина Степановна', 'Ytkina', '999', 10, '20', 89020105);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

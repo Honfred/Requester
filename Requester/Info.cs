@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Requester
 {
-    class Info
+    static public class Info
     {
-        
+        static public int L;
     }
 }

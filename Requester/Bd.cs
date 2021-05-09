@@ -10,8 +10,8 @@ namespace Requester
 {
     class Bd
     {
-        MySqlConnection connection = new MySqlConnection("server=192.168.1.41;port=3306;username=student;password=123;database=student_requests"); //PHP MY Admin
-        //SqlConnection connection = new SqlConnection("Data Source=LAPTOP-2J26AE8V; Initial Catalog=Склад; Integrated Security=True"); //MS SQL Server
+        //MySqlConnection connection = new MySqlConnection("server=192.168.1.41;port=3306;username=student;password=123;database=student_requests"); //PHP MY Admin
+        SqlConnection connection = new SqlConnection("Data Source=LAPTOP-2J26AE8V; Initial Catalog=Заявки; Integrated Security=True"); //MS SQL Server
         public void openConnection()
         {
             if (connection.State == System.Data.ConnectionState.Closed)
@@ -24,7 +24,7 @@ namespace Requester
                 connection.Close();
         }
 
-        public MySqlConnection GetConnection()
+        public SqlConnection GetConnection()
         {
             return connection;
         }

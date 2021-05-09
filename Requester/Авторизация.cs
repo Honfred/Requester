@@ -1,8 +1,9 @@
-﻿using MySql.Data.MySqlClient;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace Requester
     {
         static string login;
         string password;
+        Bd bd = new Bd();
+      
         public Авторизация()
         {
             InitializeComponent();
@@ -22,20 +25,19 @@ namespace Requester
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Bd bd = new Bd();
-            Info info = new Info();
-            Главная главная = new Главная();
+
+            Главная главная = new Главная { Owner = this };
 
             if (textBox1.Text != "" && textBox2.Text != "")
             {
                 login = textBox1.Text.Trim();
 
                 password = textBox2.Text.Trim();
-                string MySqlreq = "SELECT Id_users FROM Users WHERE login = '" + login + "' AND password = md5('" + password + "') LIMIT 1;";
+                string Sqlreq = "SELECT Id_users FROM Users WHERE login = '" + login + "' AND Password = ('" + password + "');";
 
                 bd.openConnection();
 
-                MySqlCommand command = new MySqlCommand(MySqlreq, bd.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq, bd.GetConnection());
                 int id = 0;
                 id = Convert.ToInt32(command.ExecuteScalar());
 
@@ -43,23 +45,13 @@ namespace Requester
 
                 if (id != 0)
                 {
-                    string Sqlreq = "SELECT u.Fio, d.Name FROM Users AS u, Divisions AS d WHERE u.Id_division = d.Id_division and u.Login = '" + login + "'";
-
-                    using (MySqlCommand command1 = new MySqlCommand(Sqlreq, bd.GetConnection()))
-                    {
-
-                        MySqlDataReader oku = command1.ExecuteReader();
-                        while (oku.Read())
-                        {
-                            главная.label1.Text = oku["Fio"].ToString();
-                            главная.label2.Text = oku["Name"].ToString();
-                        }
-                        главная.Setlogin(login);
-                        
-                        bd.closeConnection();
-                        главная.Show();
-                        this.Hide();
-                    }
+                   
+                    Info.L = id;
+                    bd.closeConnection();
+                    главная.Show();
+                    this.Hide();
+                    textBox2.Text = "";
+                    
                 }
 
                 else { MessageBox.Show("Логин и/или пароль введены не правильно"); }

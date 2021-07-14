@@ -150,7 +150,6 @@ namespace Requester
             // 
             // comboBox5
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Location = new System.Drawing.Point(441, 222);
             this.comboBox5.Margin = new System.Windows.Forms.Padding(4);
@@ -255,7 +254,7 @@ namespace Requester
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "Главная";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

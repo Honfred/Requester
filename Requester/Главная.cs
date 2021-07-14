@@ -1,13 +1,7 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Requester
@@ -28,8 +22,8 @@ namespace Requester
         {
             InitializeComponent();
             bd.openConnection();
-            
-          
+
+
         }
 
         private void Главная_Load(object sender, EventArgs e)
@@ -70,13 +64,13 @@ namespace Requester
         }
 
         public void INfo()
- 
+
 
         {
             string Sqlreq = $"select u.Fio, d.Name from Users as u, Divisions as d where u.Id_division = d.Id_division and u.Id_users = {Info.L}";
-            SqlCommand command = new SqlCommand(Sqlreq , bd.GetConnection());
+            SqlCommand command = new SqlCommand(Sqlreq, bd.GetConnection());
             SqlDataReader reader = command.ExecuteReader();
-            while  (reader.Read()) 
+            while (reader.Read())
             {
                 label1.Text = reader[0].ToString();
                 label2.Text = reader[1].ToString();
@@ -89,9 +83,6 @@ namespace Requester
         {
             try
             {
-
-
-
                 string Sqlreq = $"insert into Orders (Name, Description, Id_clothes, Count, Id_user, DateTime, Status) " +
                     $"values ('{textBox1.Text}','{textBox2.Text}'," +
                     $"(select Id_clothes from Catalog where Name = '{comboBox5.Text}' and Size = '{comboBox3.Text}' and Attribute = '{comboBox6.Text}')," +
@@ -106,10 +97,10 @@ namespace Requester
             }
         }
 
-        public void Clothes() 
-      
+        public void Clothes()
+
         {
-            string Sqlreq = "select Name from Catalog  ";
+            string Sqlreq = "select Name from Catalog distinc group by Name";
             SqlCommand command = new SqlCommand(Sqlreq, bd.GetConnection());
             SqlDataReader reader = command.ExecuteReader();
 
@@ -133,7 +124,7 @@ namespace Requester
                 SqlCommand command = new SqlCommand(Sqlreq, bd.GetConnection());
                 command.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Такой вещи нет!", "Ошбика", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -146,7 +137,7 @@ namespace Requester
             numericUpDown1.Visible = false;
             comboBox3.Visible = false;
             comboBox6.Visible = false;
-        }   
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -186,7 +177,7 @@ namespace Requester
                 row = dataGridView1.SelectedCells[0].RowIndex;
                 id = Convert.ToInt32(dataGridView1.Rows[row].Cells[0].Value.ToString());
                 string query = "SELECT o.Id_order, o.Name, o.Description, c.Name, c.Size, c.Attribute, o.Count, o.DateTime, " +
-                "o.Status FROM Orders AS o, Catalog AS c WHERE o.Id_clothes = c.Id_clothes AND o.Id_user = '" + Info.L + "' and o.Id_order = '"+id+"'";
+                "o.Status FROM Orders AS o, Catalog AS c WHERE o.Id_clothes = c.Id_clothes AND o.Id_user = '" + Info.L + "' and o.Id_order = '" + id + "'";
                 SqlCommand command = new SqlCommand(query, bd.GetConnection());
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -202,7 +193,7 @@ namespace Requester
                 }
                 reader.Close();
                 textBox1.Visible = true;
-                textBox1.Text = Naimenovanie; 
+                textBox1.Text = Naimenovanie;
                 textBox2.Visible = true;
                 textBox2.Text = Opisanie;
                 comboBox5.Visible = true;
@@ -210,10 +201,10 @@ namespace Requester
                 numericUpDown1.Visible = true;
                 numericUpDown1.Value = Count;
                 comboBox3.Visible = true;
-                comboBox3.Text = Razmer; 
+                comboBox3.Text = Razmer;
                 comboBox6.Visible = true;
-                comboBox6.Text = Pol; 
-                
+                comboBox6.Text = Pol;
+
             }
         }
 
@@ -223,9 +214,11 @@ namespace Requester
             авторизация.Show();
             this.Hide();
         }
+
+
     }
 
 }
 
-        
-    
+
+
